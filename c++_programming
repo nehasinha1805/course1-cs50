@@ -7,3 +7,40 @@ All arrays consist of contiguous memory locations. The lowest address correspond
 
 21st jan, 2016
 C++ notes:-
+
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+  int t, l[200], c[200], h[200], w[200];
+  cout<<"enter the no. of test cases"<<endl;
+  cin>>t;
+  for(int i=0; i < t; i++)//test cases
+  {
+      cin>>l[i] >>c[i] >>h[i] >>w[i];
+      cout<<endl;
+  }
+
+    for(int j=0; j<t; j++)//test cases
+     {
+        for(int k=0; k <= (l[j]*(h[j]+1)); k++)//no. of total rows in one test
+         {
+            for(int m=0; m < c[j]; m++)
+            {
+             cout<<"*";
+               for(int n=0; n < w[j]; n++)
+               {
+                   if( l[j] % (h[j]+1) == 0)
+                         cout<<"*";
+                   else
+                        cout<<".";
+               }
+            }
+          cout<<"*"<<endl;
+         }
+      cout<<endl;
+     }
+ return 0;
+}
