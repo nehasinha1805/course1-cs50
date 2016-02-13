@@ -5,42 +5,45 @@ Instead of declaring individual variables, such as number0, number1, ..., and nu
 
 All arrays consist of contiguous memory locations. The lowest address corresponds to the first element and the highest address to the last element.
 
-21st jan, 2016
+14 feb, 2016
 C++ notes:-
 
-#include<iostream>
+chapter- Statements and flow control
 
+The three fields in a for-loop are optional. They can be left empty, but in all cases the semicolon signs between them are required. For example, for (;n<10;) is a loop without initialization or increase (equivalent to a while-loop); and for (;n<10;++) is a loop with increase, but no initialization (maybe because the variable was already initialized before the loop). A loop with no condition is equivalent to a loop with true as condition (i.e., an infinite loop).
+
+for ( n=0, i=100 ; n!=i ; ++n, --i )
+{
+   // whatever here...
+}
+
+Range-based for loop:-
+The for-loop has another syntax, which is used exclusively with ranges:
+
+for ( declaration : range ) statement;
+An example of range-based for loop using strings:
+
+// range-based for loop
+#include <iostream>
+#include <string>
 using namespace std;
 
-int main()
+int main ()
 {
-  int t, l[200], c[200], h[200], w[200];
-  cout<<"enter the no. of test cases"<<endl;
-  cin>>t;
-  for(int i=0; i < t; i++)//test cases
+  string str {"Hello!"};
+  for (char c : str)
   {
-      cin>>l[i] >>c[i] >>h[i] >>w[i];
-      cout<<endl;
+    std::cout << "[" << c << "]";
   }
-
-    for(int j=0; j<t; j++)//test cases
-     {
-        for(int k=0; k <= (l[j]*(h[j]+1)); k++)//no. of total rows in one test
-         {
-            for(int m=0; m < c[j]; m++)
-            {
-             cout<<"*";
-               for(int n=0; n < w[j]; n++)
-               {
-                   if( l[j] % (h[j]+1) == 0)
-                         cout<<"*";
-                   else
-                        cout<<".";
-               }
-            }
-          cout<<"*"<<endl;
-         }
-      cout<<endl;
-     }
- return 0;
+  std::cout << '\n';
 }
+
+output is: [H][e][l][l][o][!]
+
+Range based loops usually also make use of type deduction for the type of the elements with auto. Typically, the range-based loop above can also be written as:
+for (auto c : str)
+  std::cout << "[" << c << "]";
+
+  
+
+	
